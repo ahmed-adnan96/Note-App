@@ -1,0 +1,18 @@
+nav {
+  .logo {
+    width: 30px;
+    height: 30px;
+  }
+  .navbar {
+    background-color: #f1f6f9;
+  }
+  .dropdown {
+    cursor: pointer;
+    .dropdown-menu {
+      cursor: pointer;
+    }
+  }
+  .pointer{
+    cursor: pointer;
+  }
+}

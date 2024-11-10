@@ -1,0 +1,33 @@
+
+
+<nav class="navbar navbar-expand-sm navbar-light fixed-top  shadow">
+    <div class="container">
+      <a class="navbar-brand d-flex align-items-center p-2" href="#">
+          <img class="logo mx-1" src="./assets/images/notes-notepad-svgrepo-com.svg" alt="" srcset="">Take my notes</a>
+      <button class="navbar-toggler d-lg-none" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavId" aria-controls="collapsibleNavId"
+          aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="collapsibleNavId">
+          <ul class="navbar-nav ms-auto mt-2 mt-lg-0">
+           
+
+                <li class="nav-item dropdown" *ngIf="isLogoutNow" >
+                    <a class="nav-link dropdown-toggle" *ngIf="isLogged == true " id="dropdownId" data-bs-toggle="dropdown" >login</a>
+                    <a class="nav-link dropdown-toggle" *ngIf="isLogged == false" id="dropdownId" data-bs-toggle="dropdown" >Register</a>
+                    <div class="dropdown-menu" aria-labelledby="dropdownId">
+                        <a class="dropdown-item" (click)="isLoggedValue()" routerLink="/login">Login</a>
+                        <a class="dropdown-item" (click)="isRegisterValue()" routerLink="/register">Register</a>
+                    </div>
+                </li>
+ 
+            
+              <li class="nav-item" *ngIf="!isLogoutNow"  >
+                <a class="nav-link pointer"  (click)="isLogOut()" >Logout</a>
+              </li>
+      
+          </ul>
+
+      </div>
+</div>
+</nav>

@@ -1,0 +1,79 @@
+<section class="py-5">
+    <div class="container">
+        <div class="row my-5 justify-content-between  align-items-center ">
+            <div class="col-md-9">
+                <input type="text" [(ngModel)]="searchKey" class="form-control " placeholder="search....">
+            </div>
+            <div class="col-3 ">
+                <button type="button" class="btn btn-danger btn-lg mx-auto d-block" data-bs-toggle="modal"
+                    data-bs-target="#exampleModal" data-bs-whatever="@mdo">Add Note </button>
+                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h1 class="modal-title fs-5" id="exampleModalLabel">New Note</h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <form [formGroup]="this.creatNote">
+                                    <div class="mb-3">
+                                        <label for="title" class="col-form-label">Title:</label>
+                                        <input type="text" formControlName="title" class="form-control" id="title">
+                                        <p *ngIf="this.creatNote.get('title')?.touched && this.creatNote.get('title')?.errors" class="small text-danger pt-1 ps-1">
+                                            <span *ngIf="this.creatNote.get('title')?.getError('required')">Title is Required</span>
+                                        </p>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="content" class="col-form-label">Content:</label>
+                                        <textarea formControlName="content" class="form-control"
+                                            id="content"></textarea>
+                                            <p class="text-danger pt-1 ps-1 " *ngIf="this.creatNote.get('content')?.touched && this.creatNote.get('content')?.errors">
+                                                <span *ngIf="this.creatNote.get('content')?.getError('required')">Content Is Required</span>
+                                            </p>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-primary" [disabled]="this.creatNote.invalid" (click)=" AddNoteUser()"
+                                    data-bs-dismiss="modal">Add</button>
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row gy-3">
+            <div *ngFor="let note of Notes " class="col-md-3 col-sm-12">
+                <div class="card shadow">
+                    <div class="note-head d-flex justify-content-between">
+                        <h1 class="h6">
+                            {{note.title}}
+                            
+                        </h1>
+                        <i class="fa solid fa-ellipsis-vertical settings-dots"></i>
+                    </div>
+                    <p class="lead">{{note.content}}</p>
+                    <div >
+                        <div class="row">
+                                <div class="col-md-6">
+                                    <p class="small text-muted text-start">{{note.createdAt | date}}</p>
+                                </div>
+                                <div class="col-md-6">
+                                    <p class="small text-muted text-end">{{note.updatedAt | date : 'shortTime'}}</p>
+                                </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+
+
+    </div>
+</section>

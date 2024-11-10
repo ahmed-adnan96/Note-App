@@ -1,0 +1,87 @@
+<section class="py-5 ">
+    <div class="container">
+        <div class="card rounded-5 p-3 mt-5">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="">
+                        <img src="./assets/images/Sign up-rafiki.svg" class="width" alt="Note App">
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <form [formGroup]="this.newUser" (ngSubmit)="createUser()">
+                        <div class="mb-3">
+                            <label for="name" class="form-label">name</label>
+                            <input type="text" class="form-control" formControlName="name" id="name"
+                                aria-describedby="name" [class.is-valid]="name?.valid"
+                                [class.is-invalid]="name?.invalid">
+                            <div id="name" *ngIf="name?.touched && name?.errors" class="form-text">
+                                <p *ngIf="name?.getError('required')">Name Is Required</p>
+                                <p *ngIf="name?.getError('minlength')">Name Should be more than or equal 3 chars</p>
+                                <p *ngIf="name?.getError('maxlength')">Name Should be less than or equal 20 chars</p>
+                            </div>
+                            <div id="name" *ngIf="name?.touched && name?.valid" class="form-text valid-feedback">
+                                <p>Looks good!</p>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="email" class="form-label">email</label>
+                            <input type="email" class="form-control" formControlName="email" id="email"
+                                aria-describedby="email" [class.is-valid]="email?.valid"
+                                [class.is-invalid]="email?.invalid">
+                            <div id="email" *ngIf="email?.touched && email?.errors" class="form-text">
+                                <p *ngIf="email?.getError('required')">Email Is Required</p>
+                                <p *ngIf="email?.getError('email')">Enter Valid Email </p>
+                            </div>
+                            <div id="name" *ngIf="email?.touched && email?.valid" class="form-text valid-feedback">
+                                <p>Looks good!</p>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="password" class="form-label">password</label>
+                            <input type="password" class="form-control" formControlName="password" id="password"
+                                aria-describedby="password" [class.is-valid]="password?.valid"
+                                [class.is-invalid]="password?.invalid">
+                            <div id="password" class="form-text" *ngIf="password?.errors && password?.touched">
+                                <p *ngIf="password?.getError('required')">Password Required!! </p>
+
+                                <p *ngIf="password?.getError('pattern')">password must start with upperCase then from 6
+                                    to more any chars </p>
+                            </div>
+                            <div id="password" class="form-text" *ngIf="password?.valid && password?.touched" class="form-text valid-feedback" >
+                                <p>Looks good!</p>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="age" class="form-label">age</label>
+                            <input type="age" class="form-control" formControlName="age" id="age"
+                                aria-describedby="age" [class.is-valid]="age?.valid" [class.is-invalid]="age?.invalid">
+                            <div id="age" class="form-text" *ngIf="age?.touched && age?.errors">
+                                <p *ngIf="age?.getError('required')">Age Is Required</p>
+                            </div>
+                            <div id="age" class="form-text" *ngIf="age?.touched && age?.valid" class="form-text valid-feedback">
+                                <p>Looks good!</p>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="phone" class="form-label">phone</label>
+                            <input type="phone" class="form-control" formControlName="phone" id="phone"
+                                aria-describedby="phone" [class.is-valid]="phone?.valid" [class.is-invalid]="phone?.invalid">
+                            <div id="phone" class="form-text" *ngIf="phone?.touched && phone?.errors">
+                                <p *ngIf="phone?.getError('required')">Phone Is Required</p>
+                                <p *ngIf="phone?.getError('pattern')">accept only egypt phone numbers</p>
+                            </div>
+                            <div id="age" class="form-text" *ngIf="phone?.touched && phone?.valid" class="form-text valid-feedback">
+                                <p>Wooow Great!</p>
+                            </div>
+                        </div>
+
+                        <button class="btn  w-100" [class.disabled]="this.newUser.invalid">submit <span *ngIf="isReady"><i class="fa-solid fa-spinner fa-spin"></i></span> </button>
+                            <div class="text-danger form-text  " *ngIf="this.errorMsg" >
+                                    <p>{{this.errorMsg}}</p>
+                            </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
